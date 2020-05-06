@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Rutas del controlador de Videos
+Route::get('/crear-video', array(
+  'as' => 'createVideo',
+  'middleware' => 'auth',
+  'uses' => 'VideoController@createVideo'
+));
