@@ -16,4 +16,14 @@ class VideoController extends Controller
     public function createVideo(){
       return view('video.createVideo');
     }
+
+    public function saveVideo(Request $request){
+
+      //Validar Formlario
+      $validatedData = $this->validate($request,[
+        'title' => 'required|min:5',
+        'description' => 'required',
+        'video' => 'mimes:mp4'
+      ]);
+    }
 }

@@ -37,8 +37,7 @@
                         <div class="form-group mx-sm-3 mb-2">
                             <input type="password" class="form-control" id="search" placeholder="¿Que deseas ver?">
                         </div>
-                        <button type="submit" class="btn btn-light btn-xs">Buscar</button>
-
+                        <button type="submit" class="btn btn-light btn-xs"><i class="fas fa-search"></i></button>
                       </form>
 
                     </ul>

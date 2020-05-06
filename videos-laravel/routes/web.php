@@ -31,3 +31,9 @@ Route::get('/crear-video', array(
   'middleware' => 'auth',
   'uses' => 'VideoController@createVideo'
 ));
+
+Route::post('/guardar-video', array(
+  'as' => 'saveVideo',
+  'middleware' => 'auth',
+  'uses' => 'VideoController@saveVideo'
+));
