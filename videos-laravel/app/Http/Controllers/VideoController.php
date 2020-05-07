@@ -70,4 +70,6 @@ class VideoController extends Controller
       $file = Storage::disk('videos')->get($filename);
       return new Response($file, 200);
     }
+
+    
 }
