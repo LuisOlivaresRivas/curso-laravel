@@ -11,7 +11,7 @@
 
       </video>
       <!--Descripción-->
-      Subido por el usuario {{$video->user->name.' '.$video->user->surname}} el día {{$video->created_at}}
+      Subido por el usuario {{$video->user->name.' '.$video->user->surname}} el día {{\FormatTime::LongTimeFilter($video->created_at)}}
 
       <!--comentarios-->
   </div>
