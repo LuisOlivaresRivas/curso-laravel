@@ -11,7 +11,7 @@
         @endif
         @foreach($videos as $video)
 
-        <div class="card">
+        <div class="card" style="width:50rem;">
 
           <div class="card-body pull-right">
             <div class="row">
@@ -21,9 +21,9 @@
                 @endif
               </div>
               <div class="col-md-6">
-            <h4 class="card-title">{{ $video->title? $video->title : 'titulo no disponibe' }}</h4>
+            <h4 class="card-title"><a href="{{ route('detailVideo',['video_id' => $video->id]) }}" >{{ $video->title? $video->title : 'titulo no disponibe' }}</h4></a>
             <p class="card-text">{{$video->user->name.' '.$video->user->surname}}</p>
-            <a href="" class="btn btn-success">Ver</a>
+            <a href="{{ route('detailVideo',['video_id' => $video->id]) }}" class="btn btn-success">Ver</a>
             @if(Auth::check() && Auth::user()->id == $video->user->id)
               <a href="" class="btn btn-primary">Editar</a>
               <a href="" class="btn btn-danger">Eliminar</a>
