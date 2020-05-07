@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -52,4 +50,10 @@ Route::get('/video/{video_id}',array(
 Route::get('/video-file{filename}',array(
   'as' => 'fileVideo',
   'uses' => 'VideoController@getVideo'
+));
+
+Route::post('/comment',array(
+  'as' => 'comment',
+  'middleware' => 'auth',
+  'uses' => 'CommentController@store'
 ));

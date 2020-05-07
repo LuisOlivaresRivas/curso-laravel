@@ -14,6 +14,8 @@
       Subido por el usuario {{$video->user->name.' '.$video->user->surname}} el día {{\FormatTime::LongTimeFilter($video->created_at)}}
 
       <!--comentarios-->
+        @include('video.comments')
+
   </div>
 </div>
 @endsection
