@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\JwtAuth;
 use Illuminate\Support\Facades\DB;
 use App\User;
 
@@ -65,6 +66,44 @@ class UserController extends Controller
   }
 
   public function login(Request $request){
-    echo "Accion login"; die();
+    $jwtAuth = new JwtAuth();
+
+    //Recibir post
+    $json = $request->input('json',null);
+    $params = json_decode($json);
+    if(!is_null($json)){
+      $email = (isset($params->email)) ? $params->email : null;
+      $password = (isset($params->password)) ? $params->password: null;
+      $getToken = (isset($params->getToken) ) ? $params->getToken : null;
+
+
+      if(!is_null($email) && !is_null($password) && ($getToken == null || $getToken == 'false')){
+        //Cifrar la password
+        $pwd = hash('sha256',$password);
+        $singup = $jwtAuth->signup($email,$pwd);
+
+      }elseif (!is_null($email) && !is_null($password) && $getToken != null) {
+
+        $pwd = hash('sha256',$password);
+        $singup = $jwtAuth->signup($email,$pwd,$getToken);
+
+
+
+      }else{
+        $signup =array(
+          'status' => 'error',
+          'message' => 'Envia tus datos por post'
+        );
+
+      }
+
+    }else{
+      $signup =array(
+        'status' => error,
+        'message' => 'Envia tus datos por post'
+      );
+    }
+
+      return response()->json($singup,200);
   }
 }
