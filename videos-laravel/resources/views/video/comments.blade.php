@@ -23,7 +23,7 @@
     <div class="card separacion"><div class="card-body"></div></div>
     <div class="card comentario-listado">
       <div class="card-header">
-        {{$comment->user->name.' '.$comment->user->surname}} hace {{\FormatTime::LongTimeFilter($comment->created_at)}}
+        {{$comment->user->name.' '.$comment->user->surname}}  {{\FormatTime::LongTimeFilter($comment->created_at)}}
       </div>
       <div class="card-body">
           {{$comment->body}}

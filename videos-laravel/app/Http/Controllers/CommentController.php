@@ -26,7 +26,7 @@ class CommentController extends Controller
       ));
     }
 
-    public function deleteComment($comment_id){
+    public function delete($comment_id){
         $user = \Auth::user();
         $comment = Comment::find($comment_id);
         if($user && ($comment->user_id == $user->id || $comment->video->user_id == $user->id)){

@@ -26,7 +26,27 @@
             <a href="{{ route('detailVideo',['video_id' => $video->id]) }}" class="btn btn-success">Ver</a>
             @if(Auth::check() && Auth::user()->id == $video->user->id)
               <a href="" class="btn btn-primary">Editar</a>
-              <a href="" class="btn btn-danger">Eliminar</a>
+              <a href="#modal-eliminar{{$video->id}}" role="button" data-toggle="modal" class="btn btn-danger">Eliminar</a>
+              <div class="modal fade" id="modal-eliminar{{$video->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>¿Seguro que quieres borrar este video?</p>
+                    <p class="text-primary"><small>{{$video->title}}</small></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <a href="{{ url('/delete-video/'.$video->id) }}" type="button" class="btn btn-danger">Eliminar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             @endif
           </div>
           </div>
