@@ -10,16 +10,27 @@
         <li>
           <a>Inicio</a>
         </li>
-        <li>
+        <li *ngIf="identity">
           <a>Crear Coche</a>
         </li>        
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
         <li>
           <a [routerLink]="['login']">Identificate</a>
         </li>
         <li>
           <a [routerLink]="['registro']">Registro</a>
+        </li>        
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="identity">
+        <li>
+          <a>{{identity.name + ' ' + identity.surname}}</a>
+        </li>
+        <li>
+          <a [routerLink]="['registro']">
+            <span class="glyphicon glyphicon-log-out"></span>
+             Salir
+          </a>
         </li>        
       </ul>
     </div>
