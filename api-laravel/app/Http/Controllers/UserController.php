@@ -59,7 +59,7 @@ class UserController extends Controller
       $data = array(
         'status' => 'error',
         'code' => 400,
-        'message' => 'Usuario no creado'
+        'message' => 'Usuario no creado json null'
       );
     }
     return response()->json($data, 200);
