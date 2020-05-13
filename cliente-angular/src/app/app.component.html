@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         <li>
-          <a>Inicio</a>
+          <a [routerLink]="['']">Inicio</a>
         </li>
         <li *ngIf="identity">
           <a>Crear Coche</a>
@@ -27,7 +27,7 @@
           <a>{{identity.name + ' ' + identity.surname}}</a>
         </li>
         <li>
-          <a [routerLink]="['registro']">
+          <a [routerLink]="['logout', 1]">
             <span class="glyphicon glyphicon-log-out"></span>
              Salir
           </a>
